@@ -2,9 +2,8 @@
   hosts: all
   become: true
   tasks:
-    - name: Update the package list
-      ansible.builtin.apt:
-        update_cache: yes
+    - name: Update system
+      include_tasks: ../tasks/update.yml
 
     - name: Install prerequisites for Docker
       ansible.builtin.apt:
@@ -32,8 +31,7 @@
         state: present
 
     - name: Update the package list after adding Docker repo
-      ansible.builtin.apt:
-        update_cache: yes
+      include_tasks: ../tasks/update.yml
 
     - name: Install Docker packages
       ansible.builtin.apt:
@@ -48,3 +46,6 @@
     - name: Run hello-world container to verify Docker installation
       ansible.builtin.command:
         cmd: docker run hello-world
+
+    - name: Configure docker permissions
+      include_tasks: ../tasks/configure_docker_permissions.yml
