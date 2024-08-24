@@ -1,0 +1,16 @@
+- name: Create directories and Dockge
+  ansible.builtin.file:
+    path: "{{ item }}"
+    state: directory
+  loop:
+    - /opt/dockge
+
+- name: Download compose.yaml
+  ansible.builtin.get_url:
+    url: "https://dockge.kuma.pet/compose.yaml?port=5001&stacksPath={{ dockge_stacks_path }}"
+    dest: /opt/dockge/compose.yaml
+
+- name: Start the Dockge server
+  ansible.builtin.command:
+    cmd: docker compose up -d
+    chdir: /opt/dockge

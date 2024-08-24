@@ -1,0 +1,14 @@
+- name: Install ceres server
+  hosts: 'ceres-demo'
+  become: true
+  vars_files:
+    - ../vars.yml
+  tasks:
+    - name: Install docker
+      include_tasks: ../tasks/docker.yml
+
+    - name: Configure docker permissions
+      include_tasks: ../tasks/docker_permissions.yml
+
+    - name: Install dockge
+      include_tasks: ../tasks/dockge.yml
