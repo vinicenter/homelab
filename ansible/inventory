@@ -1,0 +1,2 @@
+[webservers]
+ceres-demo ansible_user=orangepi
