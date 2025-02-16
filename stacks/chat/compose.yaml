@@ -1,0 +1,21 @@
+services:
+  lobe-chat:
+    expose:
+      - 3210
+    environment:
+      - OPENAI_API_KEY=a
+      - OPENAI_PROXY_URL=http://192.168.1.11:1234/v1
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.lobe-chat.rule=Host(`chat.$GATEWAY_HOST`)
+      - traefik.http.routers.lobe-chat.entrypoints=web,websecure
+      - traefik.http.routers.lobe-chat.tls.certresolver=letsencrypt
+      - traefik.http.services.lobe-chat.loadbalancer.server.port=3210
+      - traefik.http.routers.lobe-chat.middlewares=authelia@docker
+    container_name: lobe-chat
+    image: lobehub/lobe-chat
+    restart: unless-stopped
+    networks:
+      - home-lab
+networks:
+  home-lab:

@@ -1,0 +1,18 @@
+services:
+  openspeedtest:
+    restart: unless-stopped
+    container_name: openspeedtest
+    expose:
+      - 3000
+    image: openspeedtest/latest
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.openspeedtest.rule=Host(`speedtest.$GATEWAY_HOST`)
+      - traefik.http.routers.openspeedtest.entrypoints=web,websecure
+      - traefik.http.routers.openspeedtest.tls.certresolver=letsencrypt
+      - traefik.http.routers.openspeedtest.middlewares=authelia@docker
+      - traefik.http.services.openspeedtest.loadbalancer.server.port=3000
+    networks:
+      - home-lab
+networks:
+  home-lab:

@@ -1,0 +1,39 @@
+services:
+  adguardhome:
+    container_name: adguardhome
+    image: adguard/adguardhome:latest
+    command:
+      - --no-check-update
+      - -c
+      - /opt/adguardhome/conf/AdGuardHome.yaml
+      - -w
+      - /opt/adguardhome/work
+    entrypoint:
+      - /opt/adguardhome/AdGuardHome
+    ports:
+      - 53:53/tcp # DNS queries
+      - 53:53/udp # DNS queries
+      - 853:853/tcp # DNS-over-TLS (DoT)
+      - 784:784/udp # DNS-over-QUIC (DoQ)
+      - 853:853/udp # DNS-over-DTLS (DoT)
+      - 8853:8853/udp # DNS-over-TLS (DoT)
+      - 5443:5443/tcp # DNSCrypt
+      - 5443:5443/udp # DNSCrypt
+    expose:
+      - 3000
+    volumes:
+      - $VOLUME_BASE_PATH/adguardhome_conf:/opt/adguardhome/conf
+      - $VOLUME_BASE_PATH/adguardhome_work:/opt/adguardhome/work
+    working_dir: /opt/adguardhome/work
+    restart: unless-stopped
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.adguardhome.rule=Host(`adguardhome.$GATEWAY_HOST`)
+      - traefik.http.routers.adguardhome.entrypoints=web,websecure
+      - traefik.http.routers.adguardhome.tls.certresolver=letsencrypt
+      - traefik.http.routers.adguardhome.middlewares=authelia@docker
+      - traefik.http.services.adguardhome.loadbalancer.server.port=3000
+    networks:
+      - home-lab
+networks:
+  home-lab:

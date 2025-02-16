@@ -1,0 +1,27 @@
+services:
+  gitea:
+    image: gitea/gitea:latest
+    container_name: gitea
+    environment:
+      - USER_UID=1000
+      - USER_GID=1000
+      - SSH_LISTEN_PORT=2222
+    restart: always
+    networks:
+      - home-lab
+    volumes:
+      - $VOLUME_BASE_PATH/gitea_data:/data
+      - /etc/timezone:/etc/timezone:ro
+      - /etc/localtime:/etc/localtime:ro
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.gitea.rule=Host(`gitea.$GATEWAY_HOST`)
+      - traefik.http.routers.gitea.entrypoints=web,websecure
+      - traefik.http.routers.gitea.tls.certresolver=letsencrypt
+      - traefik.http.services.gitea.loadbalancer.server.port=3000
+    expose:
+      - 3000
+    ports:
+      - 2222:2222
+networks:
+  home-lab:

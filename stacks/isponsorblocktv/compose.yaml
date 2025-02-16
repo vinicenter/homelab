@@ -1,0 +1,7 @@
+services:
+  iSponsorBlockTV:
+    image: ghcr.io/dmunozv04/isponsorblocktv
+    container_name: isponsorblocktv
+    restart: unless-stopped
+    volumes:
+    - $VOLUME_BASE_PATH/isponsorblocktv_data:/app/data

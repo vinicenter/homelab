@@ -1,0 +1,38 @@
+services:
+  jellyfin:
+    container_name: jellyfin
+    entrypoint:
+      - /init
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Etc/UTC
+      - PATH=/lsiopy/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+      - HOME=/root
+      - LANGUAGE=en_US.UTF-8
+      - LANG=en_US.UTF-8
+      - TERM=xterm
+      - S6_CMD_WAIT_FOR_SERVICES_MAXTIME=0
+      - S6_VERBOSITY=1
+      - S6_STAGE2_HOOK=/docker-mods
+      - VIRTUAL_ENV=/lsiopy
+      - LSIO_FIRST_PARTY=true
+      - NVIDIA_DRIVER_CAPABILITIES=compute,video,utility
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.jellyfin.rule=Host(`jellyfin.$GATEWAY_HOST`)
+      - traefik.http.routers.jellyfin.entrypoints=web,websecure
+      - traefik.http.routers.jellyfin.tls.certresolver=letsencrypt
+      - traefik.http.services.jellyfin.loadbalancer.server.port=8096
+      - traefik.http.routers.jellyfin.middlewares=authelia@docker
+    image: lscr.io/linuxserver/jellyfin:latest
+    expose:
+      - 8096
+    volumes:
+      - $VOLUME_BASE_PATH/jellyfin_config:/config
+      - $VOLUME_BASE_PATH/jellyfin_data:/data
+    restart: unless-stopped
+    networks:
+      - home-lab
+networks:
+  home-lab:

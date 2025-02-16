@@ -1,0 +1,34 @@
+services:
+  uptimekuma:
+    container_name: uptimekuma
+    command:
+      - node
+      - server/server.js
+    entrypoint:
+      - /usr/bin/dumb-init
+      - --
+      - extra/entrypoint.sh
+    environment:
+      - PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+      - NODE_VERSION=16.20.2
+      - YARN_VERSION=1.22.19
+      - UPTIME_KUMA_IS_CONTAINER=1
+    image: louislam/uptime-kuma:latest
+    expose:
+      - 3001
+    volumes:
+      - $VOLUME_BASE_PATH/uptime-kuma_data:/app/data
+      - /var/run/docker.sock:/var/run/docker.sock
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.uptimekuma.rule=Host(`uptime.$GATEWAY_HOST`)
+      - traefik.http.routers.uptimekuma.entrypoints=web,websecure
+      - traefik.http.routers.uptimekuma.tls.certresolver=letsencrypt
+      - traefik.http.routers.uptimekuma.middlewares=authelia@docker
+      - traefik.http.services.uptimekuma.loadbalancer.server.port=3001
+    working_dir: /app
+    restart: unless-stopped
+    networks:
+      - home-lab
+networks:
+  home-lab:

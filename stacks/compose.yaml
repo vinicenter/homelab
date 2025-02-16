@@ -1,0 +1,15 @@
+include:
+  - ./adguardhome/compose.yaml
+  - ./authelia/compose.yaml
+  - ./chat/compose.yaml
+  - ./filebrowser/compose.yaml
+  - ./gitea/compose.yaml
+  - ./homeassistant/compose.yaml
+  - ./isponsorblocktv/compose.yaml
+  - ./jellyfin/compose.yaml
+  - ./lusci/compose.yaml
+  - ./openspeedtest/compose.yaml
+  - ./traefik/compose.yaml
+  - ./transmission/compose.yaml
+  - ./uptimekuma/compose.yaml
+  - ./youtubedl/compose.yaml

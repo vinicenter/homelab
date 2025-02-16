@@ -1,0 +1,20 @@
+services:
+  lusci:
+    image: eclipse-temurin:21-jre-alpine
+    container_name: lusci
+    volumes:
+      - $VOLUME_BASE_PATH/lusci_data/lusci.jar:/opt/app/lusci.jar
+    command:
+      - java
+      - -jar
+      - /opt/app/lusci.jar
+    environment:
+      - DISCORD_BOT_TOKEN=$DISCORD_BOT_TOKEN
+      - GEMINI_API_KEY=$GEMINI_API_KEY  
+      - JELLYFIN_API_KEY=$JELLYFIN_API_KEY
+      - JELLYFIN_URL=$JELLYFIN_URL
+    networks:
+      - home-lab
+    restart: unless-stopped
+networks:
+  home-lab:
