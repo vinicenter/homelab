@@ -1,11 +1,13 @@
 version: '3.8'
 services:
-  fallback-close:
+  fallback:
+    container_name: 'fallback'
+    restart: unless-stopped
     image: python:3.11-slim
     volumes:
       - ./app.py:/app.py
     expose:
-      - 4444
+      - 443
     command: python /app.py
     networks:
       - gateway
@@ -13,4 +15,3 @@ services:
 networks:
   gateway:
     driver: bridge
-
