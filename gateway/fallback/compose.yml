@@ -1,10 +1,16 @@
 version: '3.8'
-
 services:
-  fallback-backend:
+  fallback-close:
     image: python:3.11-slim
     volumes:
       - ./app.py:/app.py
-    ports:
-      - "4444:4444"
-    command: sh -c "pip install flask && python /app.py"
+    expose:
+      - 4444
+    command: python /app.py
+    networks:
+      - gateway
+
+networks:
+  gateway:
+    driver: bridge
+

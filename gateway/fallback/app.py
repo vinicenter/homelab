@@ -1,10 +1,12 @@
-from flask import Flask, Response
+import socket
 
-app = Flask(__name__)
+HOST = '0.0.0.0'
+PORT = 4444
 
-@app.route('/')
-def fallback():
-    return Response("Not authorized or not found.", status=404)
-
-if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=4444)
+with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
+    s.bind((HOST, PORT))
+    s.listen()
+    print(f"Listening on {HOST}:{PORT}")
+    while True:
+        conn, addr = s.accept()
+        conn.close()
