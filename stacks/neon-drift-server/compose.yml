@@ -1,0 +1,17 @@
+services:
+  neon-drift-server:
+    container_name: neon-drift-server
+    image: neon-drift-server:arm64
+    expose:
+      - 3000
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.neondrift.rule=Host(`neon-drift-server.$GATEWAY_HOST`)
+      - traefik.http.routers.neondrift.entrypoints=web,websecure
+      - traefik.http.routers.neondrift.tls.certresolver=letsencrypt
+      - traefik.http.services.neondrift.loadbalancer.server.port=3000
+    restart: unless-stopped
+    networks:
+      - home-lab
+networks:
+  home-lab:

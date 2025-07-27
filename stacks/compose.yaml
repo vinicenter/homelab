@@ -6,6 +6,7 @@ include:
   - ./isponsorblocktv/compose.yml
   - ./jellyfin/compose.yml
   - ./lusci/compose.yml
+  - ./neon-drift-server/compose.yml
   - ./openspeedtest/compose.yml
   - ./traefik/compose.yml
   - ./uptimekuma/compose.yml
