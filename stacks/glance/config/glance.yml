@@ -18,51 +18,51 @@ pages:
             title: Services
             sites:
               - title: Home Assistant
-                url: https://ha.homelab.vini.center/
+                url: https://ha.${GATEWAY_HOST}/
                 check-url: http://172.17.0.1:8123
                 icon: di:home-assistant
               - title: Jellyfin
-                url: https://jellyfin.homelab.vini.center/
+                url: https://jellyfin.${GATEWAY_HOST}/
                 check-url: http://jellyfin:8096
                 icon: di:jellyfin
               - title: qBittorrent (VPN Only)
-                url: https://qbittorrent.homelab.vini.center/
+                url: https://qbittorrent.${GATEWAY_HOST}/
                 check-url: http://qbittorrent:8080
                 icon: di:qbittorrent
               - title: Sonarr (VPN Only)
-                url: https://sonarr.homelab.vini.center/
+                url: https://sonarr.${GATEWAY_HOST}/
                 check-url: http://sonarr:8989
                 icon: di:sonarr
               - title: Radarr (VPN Only)
-                url: https://radarr.homelab.vini.center/
+                url: https://radarr.${GATEWAY_HOST}/
                 check-url: http://radarr:7878
                 icon: di:radarr
               - title: Prowlarr (VPN Only)
-                url: https://prowlarr.homelab.vini.center/
+                url: https://prowlarr.${GATEWAY_HOST}/
                 check-url: http://prowlarr:9696
                 icon: di:prowlarr
               - title: Bazarr (VPN Only)
-                url: https://bazarr.homelab.vini.center/
+                url: https://bazarr.${GATEWAY_HOST}/
                 check-url: http://bazarr:6767
                 icon: di:bazarr
               - title: File Browser (VPN Only)
-                url: https://filebrowser.homelab.vini.center/
+                url: https://filebrowser.${GATEWAY_HOST}/
                 check-url: http://filebrowser:80
                 icon: di:filebrowser
               - title: Traefik (VPN Only)
-                url: https://traefik.homelab.vini.center/
+                url: https://traefik.${GATEWAY_HOST}/
                 check-url: http://traefik:8080
                 icon: di:traefik
-              - title: Uptimekuma (VPN Only)
-                url: https://uptime.homelab.vini.center/
+              - title: Uptimekuma
+                url: https://uptime.${GATEWAY_HOST}/
                 check-url: http://uptimekuma:3001
                 icon: di:uptime-kuma
               - title: OpenSpeedTest (VPN Only)
-                url: https://speedtest.homelab.vini.center/
+                url: https://speedtest.${GATEWAY_HOST}/
                 check-url: http://openspeedtest:3000
                 icon: di:openspeedtest
               - title: Adguardhome (VPN Only)
-                url: https://adguardhome.homelab.vini.center/
+                url: https://adguardhome.${GATEWAY_HOST}/
                 check-url: http://adguardhome:3000
                 icon: di:adguard-home
 
