@@ -8,9 +8,3 @@ services:
     restart: unless-stopped
     volumes:
       - ./nginx.conf:/etc/nginx/nginx.conf
-    networks:
-      - gateway
-
-networks:
-  gateway:
-    driver: bridge

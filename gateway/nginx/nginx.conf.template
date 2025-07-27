@@ -8,7 +8,7 @@ stream {
   map $ssl_preread_server_name $backend {
     jellyfin.${GATEWAY_HOST} ${DESTINATION_IP}:443;
     ha.${GATEWAY_HOST} ${DESTINATION_IP}:443;
-    default fallback:4444;
+    default 127.0.0.1:4444;
   }
 
   server {

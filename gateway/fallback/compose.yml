@@ -9,9 +9,3 @@ services:
     command: node /fallback.js
     ports:
       - "4444:4444"
-    networks:
-      - gateway
-
-networks:
-  gateway:
-    driver: bridge
