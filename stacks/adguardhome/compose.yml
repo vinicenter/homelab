@@ -5,8 +5,8 @@ services:
     expose:
       - 3000
     volumes:
-      - $VOLUME_BASE_PATH/adguardhome_work:/opt/adguardhome/work\
-      - $VOLUME_BASE_PATH/adguardhome_config:/opt/adguardhome/conf\
+      - $VOLUME_BASE_PATH/adguardhome_work:/opt/adguardhome/work
+      - $VOLUME_BASE_PATH/adguardhome_config:/opt/adguardhome/conf
     restart: unless-stopped
     ports:
       - 53:53/tcp
