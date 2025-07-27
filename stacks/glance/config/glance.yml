@@ -75,6 +75,8 @@ pages:
             groups:
               - title: Infrastructure
                 links:
+                  - title: Homelab repo
+                    url: https://github.com/vinicenter/homelab
                   - title: Tailscale Login
                     url: https://login.tailscale.com
                   - title: Oracle Cloud Infrastructure 
