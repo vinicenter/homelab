@@ -5,7 +5,9 @@ services:
     network_mode: host
     restart: unless-stopped
     volumes:
-      - ./nginx.conf:/etc/nginx/nginx.conf:ro
+      - ./nginx.conf.template:/etc/nginx/nginx.conf.template:ro
     environment:
-      - DESTINATION_IP=$DESTINATION_IP
-      - GATEWAY_HOST=$GATEWAY_HOST
+      - DESTINATION_IP=${DESTINATION_IP}
+      - GATEWAY_HOST=${GATEWAY_HOST}
+    command: >
+      sh -c "envsubst '\$DESTINATION_IP \$GATEWAY_HOST' < /etc/nginx/nginx.conf.template > /etc/nginx/nginx.conf && nginx -g 'daemon off;'"
