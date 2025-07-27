@@ -1,2 +1,2 @@
 [webservers]
-ceres-demo ansible_user=orangepi
+neptune ansible_user=ubuntu
