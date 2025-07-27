@@ -24,7 +24,6 @@ services:
       - traefik.http.routers.uptimekuma.rule=Host(`uptime.$GATEWAY_HOST`)
       - traefik.http.routers.uptimekuma.entrypoints=web,websecure
       - traefik.http.routers.uptimekuma.tls.certresolver=letsencrypt
-      - traefik.http.routers.uptimekuma.middlewares=authelia@docker
       - traefik.http.services.uptimekuma.loadbalancer.server.port=3001
     working_dir: /app
     restart: unless-stopped
