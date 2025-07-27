@@ -21,4 +21,3 @@ services:
       - home-lab
 networks:
   home-lab:
-    driver: bridge

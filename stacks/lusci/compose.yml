@@ -8,11 +8,8 @@ services:
       - java
       - -jar
       - /opt/app/lusci.jar
-    environment:
-      - DISCORD_BOT_TOKEN=$DISCORD_BOT_TOKEN
-      - GEMINI_API_KEY=$GEMINI_API_KEY  
-      - JELLYFIN_API_KEY=$JELLYFIN_API_KEY
-      - JELLYFIN_URL=$JELLYFIN_URL
+    env_file:
+      - .env
     networks:
       - home-lab
     restart: unless-stopped
