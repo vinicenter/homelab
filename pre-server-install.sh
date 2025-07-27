@@ -15,6 +15,7 @@ hostnamectl set-hostname "$HOSTNAME"
 curl -fsSL https://tailscale.com/install.sh | sh
 
 tailscale up
+tailscale set --ssh=true
 
 echo "Hostname successfully changed to $HOSTNAME"
 echo "Tailscale installed and connected"
