@@ -1,7 +1,5 @@
 include:
   - ./adguardhome/compose.yaml
-  - ./authelia/compose.yaml
-  - ./chat/compose.yaml
   - ./filebrowser/compose.yaml
   - ./gitea/compose.yaml
   - ./homeassistant/compose.yaml
