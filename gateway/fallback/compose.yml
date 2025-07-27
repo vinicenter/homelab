@@ -7,7 +7,7 @@ services:
     volumes:
       - ./app.py:/app.py
     expose:
-      - 443
+      - 4444
     command: python /app.py
     networks:
       - gateway
