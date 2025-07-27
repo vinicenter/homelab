@@ -1,2 +1,3 @@
 [webservers]
 neptune ansible_user=ubuntu
+ceres ansible_user=vinicenter
