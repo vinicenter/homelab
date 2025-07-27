@@ -1,3 +1,4 @@
+version: "3.8"
 services:
   traefik:
     container_name: traefik
@@ -22,7 +23,6 @@ services:
       - traefik.http.routers.traefik.rule=Host(`traefik.$GATEWAY_HOST`)
       - traefik.http.routers.traefik.entrypoints=web,websecure
       - traefik.http.routers.traefik.tls.certresolver=letsencrypt
-      - traefik.http.routers.traefik.middlewares=authelia@docker
       - traefik.http.services.traefik.loadbalancer.server.port=8080
     expose:
       - 8080
