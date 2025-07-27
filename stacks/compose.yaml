@@ -1,13 +1,12 @@
 include:
-  - ./adguardhome/compose.yaml
-  - ./filebrowser/compose.yaml
-  - ./gitea/compose.yaml
-  - ./homeassistant/compose.yaml
-  - ./isponsorblocktv/compose.yaml
-  - ./jellyfin/compose.yaml
-  - ./lusci/compose.yaml
-  - ./openspeedtest/compose.yaml
-  - ./traefik/compose.yaml
-  - ./transmission/compose.yaml
-  - ./uptimekuma/compose.yaml
-  - ./youtubedl/compose.yaml
+  - ./adguardhome/compose.yml
+  - ./filebrowser/compose.yml
+  - ./homeassistant/compose.yml
+  - ./isponsorblocktv/compose.yml
+  - ./jellyfin/compose.yml
+  - ./lusci/compose.yml
+  - ./openspeedtest/compose.yml
+  - ./traefik/compose.yml
+  - ./transmission/compose.yml
+  - ./uptimekuma/compose.yml
+  - ./youtubedl/compose.yml
