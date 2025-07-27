@@ -61,6 +61,10 @@ pages:
                 url: https://speedtest.homelab.vini.center/
                 check-url: http://openspeedtest:3000
                 icon: di:openspeedtest
+              - title: Adguardhome (VPN Only)
+                url: https://adguardhome.homelab.vini.center/
+                check-url: http://adguardhome:3000
+                icon: di:adguard-home
 
           - type: bookmarks
             groups:
