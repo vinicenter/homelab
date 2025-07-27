@@ -11,6 +11,8 @@ services:
       - traefik.http.services.glance.loadbalancer.server.port=8080
     volumes:
       - ./config:/app/config
+    environment:
+      - GATEWAY_HOST=${GATEWAY_HOST}
     expose:
       - 8080
     networks:
