@@ -9,7 +9,7 @@ services:
       - -jar
       - /opt/app/lusci.jar
     env_file:
-      - .env
+      - ../.env
     networks:
       - home-lab
     restart: unless-stopped
