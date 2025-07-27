@@ -1,0 +1,17 @@
+http:
+  routers:
+    homeassistant:
+      entryPoints:
+          - web
+          - websecure
+      service: homeassistant
+      rule: Host(`ha.homelab.vini.center`)
+      tls:
+        certresolver: letsencrypt
+
+  services:
+    homeassistant:
+      loadBalancer:
+        servers:
+            - url: http://172.17.0.1:8123
+        passHostHeader: false

@@ -29,7 +29,7 @@ services:
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock:ro
       - $VOLUME_BASE_PATH/traefik_letsencrypt:/letsencrypt
-      - $VOLUME_BASE_PATH/traefik_data/:/data
+      - ./data/:/data
     restart: unless-stopped
     networks:
       - home-lab
