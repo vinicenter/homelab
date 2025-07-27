@@ -8,6 +8,4 @@ include:
   - ./lusci/compose.yml
   - ./openspeedtest/compose.yml
   - ./traefik/compose.yml
-  - ./transmission/compose.yml
   - ./uptimekuma/compose.yml
-  - ./youtubedl/compose.yml
