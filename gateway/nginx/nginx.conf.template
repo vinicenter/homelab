@@ -8,6 +8,7 @@ stream {
   map $ssl_preread_server_name $backend {
     jellyfin.${GATEWAY_HOST} ${DESTINATION_IP}:443;
     ha.${GATEWAY_HOST} ${DESTINATION_IP}:443;
+    uptime.${GATEWAY_HOST} ${DESTINATION_IP}:443;
     neon-drift-server.${GATEWAY_HOST} ${DESTINATION_IP}:443;
   }
 
