@@ -4,4 +4,4 @@ services:
     container_name: isponsorblocktv
     restart: unless-stopped
     volumes:
-    - $VOLUME_BASE_PATH/isponsorblocktv_data:/app/data
+      - $VOLUME_BASE_PATH/isponsorblocktv_data:/app/data
