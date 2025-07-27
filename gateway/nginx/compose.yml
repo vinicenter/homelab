@@ -9,5 +9,4 @@ services:
     environment:
       - DESTINATION_IP=${DESTINATION_IP}
       - GATEWAY_HOST=${GATEWAY_HOST}
-    command: >
-      sh -c "envsubst '\$DESTINATION_IP \$GATEWAY_HOST' < /etc/nginx/nginx.conf.template > /etc/nginx/nginx.conf && nginx -g 'daemon off;'"
+    command: tail -f /dev/null
