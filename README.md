@@ -48,7 +48,7 @@ This script will:
 
 ### Gateway Layer
 - **Nginx**: Stream-based reverse proxy for SSL termination (to expose services to the internet)
-- **Traefik**: Container-aware reverse proxy with automatic SSL certificates (to keep service on VPN only)
+- **Traefik**: Container-aware reverse proxy with automatic SSL certificates (to keep services on VPN only)
 
 ## 🛠️ Prerequisites
 
