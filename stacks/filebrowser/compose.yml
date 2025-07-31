@@ -6,8 +6,8 @@ services:
       - 80
     volumes:
       - /:/srv
+      - ./config/:/config
       - $VOLUME_BASE_PATH/filebrowser_db:/database
-      - $VOLUME_BASE_PATH/filebrowser_config:/config
     restart: unless-stopped
     security_opt:
       - no-new-privileges:true
