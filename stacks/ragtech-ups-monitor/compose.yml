@@ -1,0 +1,12 @@
+services:
+  ragtech-ups-monitor:
+    image: vinicenter/ragtech-ups-monitor:latest
+    container_name: ragtech-ups-monitor
+    restart: unless-stopped
+    devices:
+      - /dev/ttyACM0:/dev/ttyACM0
+    environment:
+      - UPS_REQUEST_HEX=$UPS_REQUEST_HEX
+      - UPTIME_KUMA_URL=$UPTIME_KUMA_UPS_URL
+      - HA_WEBHOOK_URL=$HA_UPS_WEBHOOK_URL
+    privileged: true

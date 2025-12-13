@@ -10,3 +10,4 @@ include:
   - ./openspeedtest/compose.yml
   - ./traefik/compose.yml
   - ./uptimekuma/compose.yml
+  - ./ragtech-ups-monitor/compose.yml
