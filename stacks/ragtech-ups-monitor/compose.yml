@@ -10,3 +10,7 @@ services:
       - UPTIME_KUMA_URL=$UPTIME_KUMA_UPS_URL
       - HA_WEBHOOK_URL=$HA_UPS_WEBHOOK_URL
     privileged: true
+    networks:
+      - home-lab
+networks:
+  home-lab:
