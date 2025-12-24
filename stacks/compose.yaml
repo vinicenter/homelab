@@ -4,7 +4,6 @@ include:
   - ./glance/compose.yml
   - ./homeassistant/compose.yml
   - ./isponsorblocktv/compose.yml
-  - ./jellyfin/compose.yml
   - ./lusci/compose.yml
   - ./neon-drift-server/compose.yml
   - ./openspeedtest/compose.yml

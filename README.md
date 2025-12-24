@@ -63,7 +63,6 @@ This script will:
 |---------|---------|-------|
 | Traefik | Reverse Proxy | Automatic SSL certificates |
 | AdGuard Home | DNS Ad Blocking | Network-wide protection |
-| Jellyfin | Media Server | Movies, TV shows, music |
 | Home Assistant | Home Automation | Smart home control |
 | Uptime Kuma | Monitoring | Service availability |
 | File Browser | File Management |  Web-based file access |

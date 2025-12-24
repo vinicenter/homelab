@@ -21,10 +21,6 @@ pages:
                 url: https://ha.${GATEWAY_HOST}/
                 check-url: http://172.17.0.1:8123
                 icon: di:home-assistant
-              - title: Jellyfin
-                url: https://jellyfin.${GATEWAY_HOST}/
-                check-url: http://jellyfin:8096
-                icon: di:jellyfin
               - title: Uptimekuma
                 url: https://uptime.${GATEWAY_HOST}/
                 check-url: http://uptimekuma:3001
@@ -34,26 +30,6 @@ pages:
             cache: 1m
             title: VPN-Only Services
             sites:
-              - title: qBittorrent
-                url: https://qbittorrent.${GATEWAY_HOST}/
-                check-url: http://qbittorrent:8080
-                icon: di:qbittorrent
-              - title: Sonarr
-                url: https://sonarr.${GATEWAY_HOST}/
-                check-url: http://sonarr:8989
-                icon: di:sonarr
-              - title: Radarr
-                url: https://radarr.${GATEWAY_HOST}/
-                check-url: http://radarr:7878
-                icon: di:radarr
-              - title: Prowlarr
-                url: https://prowlarr.${GATEWAY_HOST}/
-                check-url: http://prowlarr:9696
-                icon: di:prowlarr
-              - title: Bazarr
-                url: https://bazarr.${GATEWAY_HOST}/
-                check-url: http://bazarr:6767
-                icon: di:bazarr
               - title: File Browser
                 url: https://filebrowser.${GATEWAY_HOST}/
                 check-url: http://filebrowser:80
