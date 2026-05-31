@@ -10,3 +10,6 @@ include:
   - ./traefik/compose.yml
   - ./uptimekuma/compose.yml
   - ./ragtech-ups-monitor/compose.yml
+  - ./ragtech-ups-monitor/compose.yml
+  - ./firetv-remote-bridge/compose.yml
+  
