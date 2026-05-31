@@ -7,7 +7,7 @@ services:
       - /dev/input/event1:/dev/input/event1
     environment:
       - INPUT_DEVICE=/dev/input/event1
-      - HOME_ASSISTANT_URL=http://homeassistant:8123/api/events/firetv_remote
+      - HOME_ASSISTANT_URL=$HOME_ASSISTANT_FIRETV_EVENT_URL
       - HOME_ASSISTANT_TOKEN=$HOME_ASSISTANT_TOKEN
       - LONG_PRESS_THRESHOLD=0.8
       - RECONNECT_DELAY=2.0
