@@ -15,7 +15,7 @@ pages:
         widgets:
           - type: monitor
             cache: 1m
-            title: Public Services
+            title: Services
             sites:
               - title: Home Assistant
                 url: https://ha.${GATEWAY_HOST}/
@@ -25,19 +25,10 @@ pages:
                 url: https://uptime.${GATEWAY_HOST}/
                 check-url: http://uptimekuma:3001
                 icon: di:uptime-kuma
-
-          - type: monitor
-            cache: 1m
-            title: VPN-Only Services
-            sites:
               - title: File Browser
                 url: https://filebrowser.${GATEWAY_HOST}/
                 check-url: http://filebrowser:80
                 icon: di:filebrowser
-              - title: Traefik
-                url: https://traefik.${GATEWAY_HOST}/
-                check-url: http://traefik:8080
-                icon: di:traefik
               - title: OpenSpeedTest
                 url: https://speedtest.${GATEWAY_HOST}/
                 check-url: http://openspeedtest:3000

@@ -14,17 +14,11 @@ services:
       - YARN_VERSION=1.22.19
       - UPTIME_KUMA_IS_CONTAINER=1
     image: louislam/uptime-kuma:latest
-    expose:
-      - 3001
+    ports:
+      - 127.0.0.1:3001:3001
     volumes:
       - $VOLUME_BASE_PATH/uptime-kuma_data:/app/data
       - /var/run/docker.sock:/var/run/docker.sock
-    labels:
-      - traefik.enable=true
-      - traefik.http.routers.uptimekuma.rule=Host(`uptime.$GATEWAY_HOST`)
-      - traefik.http.routers.uptimekuma.entrypoints=web,websecure
-      - traefik.http.routers.uptimekuma.tls.certresolver=letsencrypt
-      - traefik.http.services.uptimekuma.loadbalancer.server.port=3001
     working_dir: /app
     restart: unless-stopped
     networks:

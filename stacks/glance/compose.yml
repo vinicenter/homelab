@@ -3,18 +3,12 @@ services:
     container_name: glance
     image: glanceapp/glance
     restart: unless-stopped
-    labels:
-      - traefik.enable=true
-      - traefik.http.routers.glance.rule=Host(`$GATEWAY_HOST`)
-      - traefik.http.routers.glance.entrypoints=web,websecure
-      - traefik.http.routers.glance.tls.certresolver=letsencrypt
-      - traefik.http.services.glance.loadbalancer.server.port=8080
     volumes:
       - ./config:/app/config
     environment:
       - GATEWAY_HOST=${GATEWAY_HOST}
-    expose:
-      - 8080
+    ports:
+      - 127.0.0.1:8080:8080
     networks:
       - home-lab
 networks:

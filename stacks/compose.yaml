@@ -7,9 +7,6 @@ include:
   - ./lusci/compose.yml
   - ./neon-drift-server/compose.yml
   - ./openspeedtest/compose.yml
-  - ./traefik/compose.yml
   - ./uptimekuma/compose.yml
   - ./ragtech-ups-monitor/compose.yml
-  - ./ragtech-ups-monitor/compose.yml
   - ./firetv-remote-bridge/compose.yml
-  

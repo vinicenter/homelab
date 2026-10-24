@@ -1,6 +1,6 @@
 # 🏠 Homelab Infrastructure
 
-A complete Docker-based homelab setup with automated deployment, reverse proxy, and monitoring solutions. This repository contains everything needed to deploy and manage a self-hosted infrastructure using Docker Compose, Ansible, and Nginx.
+A complete Docker-based homelab setup with automated deployment and monitoring solutions. This repository contains everything needed to deploy and manage a self-hosted infrastructure using Docker Compose and Ansible, exposed to the internet through a Pangolin gateway.
 
 ## 🚀 Quick Start
 
@@ -32,13 +32,7 @@ This script will:
    ansible-playbook -i inventory playbooks/install_docker.yml -l neptune
    ```
 
-2. **Start the Gateway** (Nginx reverse proxy):
-   ```bash
-   cd gateway
-   ./startGateway.sh
-   ```
-
-3. **Deploy Application Stack**:
+2. **Deploy Application Stack**:
    ```bash
    cd stacks
    docker compose up -d
@@ -47,21 +41,41 @@ This script will:
 ## 🏗️ Architecture
 
 ### Gateway Layer
-- **Nginx**: Stream-based reverse proxy for SSL termination (to expose services to the internet)
-- **Traefik**: Container-aware reverse proxy with automatic SSL certificates (to keep services on VPN only)
+
+Ingress is handled by **Pangolin**, running on a separate Oracle Cloud VPS. There is no
+reverse proxy in this repository anymore.
+
+The **Newt** agent runs natively on this server (systemd) and dials out to Pangolin, so
+no inbound port needs to be opened on the home network. Every HTTP service therefore
+publishes **only on `127.0.0.1`**, where Newt can reach it but the LAN cannot:
+
+| Service | Local address |
+|---------|---------------|
+| Glance | `127.0.0.1:8080` |
+| AdGuard Home (web UI) | `127.0.0.1:3000` |
+| Uptime Kuma | `127.0.0.1:3001` |
+| Neon Drift Server | `127.0.0.1:3002` |
+| OpenSpeedTest | `127.0.0.1:3003` |
+| File Browser | `127.0.0.1:8081` |
+| Home Assistant | `127.0.0.1:8123` (host network) |
+
+When adding a service, publish it on the next free `127.0.0.1` port and create the
+matching resource in the Pangolin dashboard.
+
+AdGuard Home is the exception: its DNS ports (53, 853, 784, 5443, 8853) stay bound to
+all interfaces, since LAN clients resolve through it directly.
 
 ## 🛠️ Prerequisites
 
 - **Operating System**: Ubuntu/Debian-based Linux
 - **Docker**: Installed via the provided Ansible playbook
-- **Domain**: Configured DNS pointing to your server
+- **Pangolin**: A reachable Pangolin instance, plus the Newt agent installed on this server
 - **Tailscale Account**: For VPN connectivity (optional)
 
 ## 📋 Services Overview
 
 | Service | Purpose | Notes |
 |---------|---------|-------|
-| Traefik | Reverse Proxy | Automatic SSL certificates |
 | AdGuard Home | DNS Ad Blocking | Network-wide protection |
 | Home Assistant | Home Automation | Smart home control |
 | Uptime Kuma | Monitoring | Service availability |
@@ -70,7 +84,8 @@ This script will:
 
 ## 🔐 Security Features
 
-- **SSL/TLS**: Automatic certificate management with Let's Encrypt
+- **SSL/TLS**: Terminated by Pangolin on the Oracle Cloud VPS
+- **No inbound ports**: Newt dials out to Pangolin; services bind to `127.0.0.1` only
 - **VPN Access**: Tailscale mesh networking
 - **SSH Security**: Tailscale SSH for secure access
 - **Container Isolation**: Docker container security

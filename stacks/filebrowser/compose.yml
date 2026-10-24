@@ -2,8 +2,8 @@ services:
   filebrowser:
     image: filebrowser/filebrowser
     container_name: filebrowser
-    expose:
-      - 80
+    ports:
+      - 127.0.0.1:8081:80
     volumes:
       - /:/srv
       - ./config/:/config
@@ -11,12 +11,6 @@ services:
     restart: unless-stopped
     security_opt:
       - no-new-privileges:true
-    labels:
-      - traefik.enable=true
-      - traefik.http.routers.filebrowser.rule=Host(`filebrowser.$GATEWAY_HOST`)
-      - traefik.http.routers.filebrowser.entrypoints=web,websecure
-      - traefik.http.routers.filebrowser.tls.certresolver=letsencrypt
-      - traefik.http.services.filebrowser.loadbalancer.server.port=80
     networks:
       - home-lab
 networks:
