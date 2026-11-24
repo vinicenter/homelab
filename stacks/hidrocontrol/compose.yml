@@ -1,0 +1,18 @@
+services:
+  hidrocontrol:
+    container_name: hidrocontrol
+    image: vinicenter/hidrocontrol:latest
+    ports:
+      - 127.0.0.1:3004:3001
+    environment:
+      - ADMIN_EMAIL=${HIDROCONTROL_ADMIN_EMAIL:-admin@hidro.local}
+      - ADMIN_PASSWORD=${HIDROCONTROL_ADMIN_PASSWORD:?defina HIDROCONTROL_ADMIN_PASSWORD no .env}
+      - TELEMETRY_HOURS=24
+      - SESSION_TTL_DAYS=30
+    volumes:
+      - $VOLUME_BASE_PATH/hidrocontrol_data:/data
+    restart: unless-stopped
+    networks:
+      - home-lab
+networks:
+  home-lab:

@@ -2,6 +2,7 @@ include:
   - ./adguardhome/compose.yml
   - ./filebrowser/compose.yml
   - ./glance/compose.yml
+  - ./hidrocontrol/compose.yml
   - ./homeassistant/compose.yml
   - ./isponsorblocktv/compose.yml
   - ./lusci/compose.yml

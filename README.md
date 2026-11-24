@@ -56,6 +56,7 @@ publishes **only on `127.0.0.1`**, where Newt can reach it but the LAN cannot:
 | Uptime Kuma | `127.0.0.1:3001` |
 | Neon Drift Server | `127.0.0.1:3002` |
 | OpenSpeedTest | `127.0.0.1:3003` |
+| HidroControl | `127.0.0.1:3004` |
 | File Browser | `127.0.0.1:8081` |
 | Home Assistant | `127.0.0.1:8123` (host network) |
 
@@ -81,6 +82,7 @@ all interfaces, since LAN clients resolve through it directly.
 | Uptime Kuma | Monitoring | Service availability |
 | File Browser | File Management |  Web-based file access |
 | Glance | Dashboard | Service overview |
+| HidroControl | IoT Water Pumps | Monitoramento/controle de bombas via WebSocket (`vinicenter/hidrocontrol`) |
 
 ## 🔐 Security Features
 

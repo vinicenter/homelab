@@ -37,6 +37,10 @@ pages:
                 url: https://adguardhome.${GATEWAY_HOST}/
                 check-url: http://adguardhome:3000
                 icon: di:adguard-home
+              - title: HidroControl
+                url: https://hidro.${GATEWAY_HOST}/
+                check-url: http://hidrocontrol:3001/api/health
+                icon: di:water-pump
 
           - type: bookmarks
             groups:
